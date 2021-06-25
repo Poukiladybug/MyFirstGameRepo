@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ObjectMovement : MonoBehaviour
 {
-    public float speed;
+    //public float speed;
 
-    public Vector3 direction;
+    //public Vector3 direction;
 
     public enum MovementType
     {
@@ -15,6 +15,18 @@ public class ObjectMovement : MonoBehaviour
     }
 
     public MovementType movementType;
+
+    // [System.Serializable] = permet à Unity d'utiliser la struct
+    [System.Serializable]
+    public struct Movement
+    {
+        public MovementType type;
+        public float speed;
+        public Vector3 direction;
+        public Space espace;
+    }
+
+    public List<Movement> movements;
 
     
 
@@ -27,22 +39,28 @@ public class ObjectMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (movementType == MovementType.Rotation)
+       foreach (Movement moove in movements)
         {
-            transform.Rotate(direction * speed * Time.deltaTime, Space.World);
-        }
-        else if (movementType == MovementType.Translation)
-        {
-            transform.Translate(direction * speed * Time.deltaTime, Space.World);
-        }
+            
 
-        //switch (movementType)
+            if (moove.type == MovementType.Rotation)
+            {
+                transform.Rotate(moove.direction.normalized * moove.speed * Time.deltaTime, moove.espace);
+            }
+            else if (moove.type == MovementType.Translation)
+            {
+                transform.Translate(moove.direction.normalized * moove.speed * Time.deltaTime, moove.espace);
+            }
+        }
+       
+
+        //switch (moove.Type)
         // {
         //     case MovementType.Rotation:
-        //         transform.Rotate(direction * speed * Time.deltaTime, Space.World)
+        //         transform.Rotate(moove.direction * moove.speed * Time.deltaTime, Space.World)
         //         break;
         //     case MovementType.Translation:
-        //         transform.Translate(direction * speed * Time.deltaTime, Space.World)
+        //         transform.Translate(moove.direction * moove.speed * Time.deltaTime, Space.World)
         //         break;
         // }
     }

@@ -266,9 +266,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d342089b0ae53544a9652df74bc4c307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  direction: {x: 1, y: 1, z: 1}
   movementType: 1
+  movements:
+  - type: 0
+    speed: 10
+    direction: {x: 1, y: 1, z: 1}
+    espace: 0
+  - type: 1
+    speed: 10
+    direction: {x: 1, y: 1, z: 1}
+    espace: 1
 --- !u!65 &1474617827
 BoxCollider:
   m_ObjectHideFlags: 0
