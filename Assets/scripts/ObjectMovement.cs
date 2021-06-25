@@ -57,10 +57,10 @@ public class ObjectMovement : MonoBehaviour
         //switch (moove.Type)
         // {
         //     case MovementType.Rotation:
-        //         transform.Rotate(moove.direction * moove.speed * Time.deltaTime, Space.World)
+        //         transform.Rotate(moove.direction.normalized * moove.speed * Time.deltaTime, moove.espace)
         //         break;
         //     case MovementType.Translation:
-        //         transform.Translate(moove.direction * moove.speed * Time.deltaTime, Space.World)
+        //         transform.Translate(moove.direction.normalized * moove.speed * Time.deltaTime, moove.espace)
         //         break;
         // }
     }
